@@ -1,11 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PowerFit</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    
+
+  <header>
+    <nav class="mega-menu">
+      <h1 class="logo">PowerFit</h1>
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">☰</label>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="clases.html">Clases</a></li>
+        <li><a href="entrenadores.html">Entrenadores</a></li>
+        <li><a href="precios.html">Precios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video autoplay muted loop class="hero-video">
+
+    <source src="assets/gym-video.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+    <div class="hero-overlay">
+      <h2 class="hero-title">Transformá tu cuerpo, transformá tu vida</h2>
+    </div>
+  </section>
+
+  <section class="clases-destacadas">
+    <h2>Clases destacadas</h2>
+    <div class="cards-container">
+      <div class="card">
+        <img src="assets/yoga.jpg" alt="Clase de Yoga" />
+        <div class="card-content">
+          <h3>Yoga</h3>
+          <p>Relajación y equilibrio.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/crossfit_37303.webp" alt="Clase de CrossFit" />
+        <div class="card-content">
+          <h3>CrossFit</h3>
+          <p>Alta intensidad.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="assets/Spinning.jpg" alt="Clase de Spinning" />
+        <div class="card-content">
+          <h3>Spinning</h3>
+          <p>Cardio total.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contador">
+    <div class="contador-item">
+      <span class="numero" id="contador-socios">500+</span>
+      <p>Socios Satisfechos</p>
+    </div>
+  </section>
+
+  <section class="testimonios">
+    <h2>Testimonios</h2>
+    <div class="carrusel">
+      <div class="slide active">
+        <p>"Gracias a PowerFit, logré mis metas."</p>
+        <strong>- Juan P.</strong>
+      </div>
+      <div class="slide">
+        <p>"Entrenadores increíbles y excelente ambiente."</p>
+        <strong>- Laura M.</strong>
+      </div>
+      <!-- Add more slides if needed -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="newsletter">
+      <h3>Suscribite al newsletter</h3>
+      <form>
+        <input type="email" placeholder="Tu email" required>
+        <button type="button" class="button">Suscribirme</button>
+      </form>
+    </div>
+
+    <div class="redes">
+        <a href="#"><img src="assets/Facebook_logo_(square).png" alt="Facebook"></a>
+        <a href="#"><img src="assets/logo-instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="assets/Logo_of_Twitter.png" alt="Twitter"></a>
+      </div>
+
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322839!2d106.8195613507848!3d-6.194741395509438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356280477!2sJakarta!5e0!3m2!1sen!2sid!4v1620385288815!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </footer>
+
+  <script src="js/dark-mode.js" defer></script>
+
 </body>
 </html>
