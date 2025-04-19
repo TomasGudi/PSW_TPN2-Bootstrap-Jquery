@@ -3,109 +3,291 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PowerFit</title>
+  <title>PowerFit - Inicio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body data-bs-theme="light">
 
   <header>
-    <nav class="mega-menu">
-      <h1 class="logo">PowerFit</h1>
-      <input type="checkbox" id="menu-toggle" />
-      <label for="menu-toggle" class="menu-icon">☰</label>
-      <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="clases.html">Clases</a></li>
-        <li><a href="entrenadores.html">Entrenadores</a></li>
-        <li><a href="precios.html">Precios</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-      <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">PowerFit</a>
+        <!-- Dark Mode Toggle Button -->
+        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2 ms-lg-3 order-lg-3" type="button" aria-label="Toggle dark mode">
+          <span class="theme-icon-active">🌙</span>
+        </button>
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="clases.html">Clases</a>
+            </li>
+            <!-- Example Mega Menu Dropdown (Adapt as needed) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="entrenadoresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Entrenadores
+              </a>
+              <ul class="dropdown-menu mega-menu" aria-labelledby="entrenadoresDropdown">
+                <!-- Add Mega Menu Content Here -->
+                <li><a class="dropdown-item" href="entrenadores.html">Ver Todos</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Entrenador Destacado 1</a></li>
+                <li><a class="dropdown-item" href="#">Entrenador Destacado 2</a></li>
+                <!-- Add more columns/links as needed for a true mega menu -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="precios.html">Precios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </header>
 
-  <section class="hero">
-    <video autoplay muted loop class="hero-video">
-
-    <source src="assets/gym-video.mp4" type="video/mp4">
-      Tu navegador no soporta el video.
+  <!-- ========================= Hero Section ========================= -->
+  <section class="hero position-relative d-flex align-items-center justify-content-center text-center vh-100 overflow-hidden">
+    <!-- Video Background -->
+    <video playsinline autoplay muted loop class="hero-video position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; z-index: -1;">
+      <source src="assets/gym-video.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento <code>video</code>.
     </video>
-    <div class="hero-overlay">
-      <h2 class="hero-title">Transformá tu cuerpo, transformá tu vida</h2>
+    <!-- Overlay -->
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <!-- Content -->
+    <div class="container position-relative" style="z-index: 1;">
+      <h1 class="hero-title display-4 fw-bold mb-3" style="display: none;">Transformá tu cuerpo, transformá tu vida</h1>
+      <p class="lead hero-subtitle" style="display: none;">Únete a la comunidad PowerFit y alcanza tus metas.</p>
+      <a href="clases.html" class="btn btn-primary btn-lg hero-button" style="display: none;">Ver Clases</a>
     </div>
   </section>
 
-  <section class="clases-destacadas">
-    <h2>Clases destacadas</h2>
-    <div class="cards-container">
-      <div class="card">
-        <img src="assets/yoga.jpg" alt="Clase de Yoga" />
-        <div class="card-content">
-          <h3>Yoga</h3>
-          <p>Relajación y equilibrio.</p>
+  <!-- ========================= Clases Destacadas ========================= -->
+  <section class="clases-destacadas py-5">
+    <div class="container">
+      <h2 class="text-center mb-5 section-title">Clases Destacadas</h2>
+      <div class="row g-4 justify-content-center">
+        <!-- Card 1: Yoga -->
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+          <div class="card h-100 shadow-sm custom-card">
+            <img src="assets/yoga.jpg" class="card-img-top" alt="Clase de Yoga" />
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title h5">Yoga</h3>
+              <p class="card-text">Encuentra tu centro, mejora tu flexibilidad y reduce el estrés con nuestras clases de yoga para todos los niveles.</p>
+              <a href="clases.html#yoga" class="btn btn-outline-primary mt-auto">Más Info</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2: CrossFit -->
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+          <div class="card h-100 shadow-sm custom-card">
+            <img src="assets/crossfit_37303.webp" class="card-img-top" alt="Clase de CrossFit" />
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title h5">CrossFit</h3>
+              <p class="card-text">Desafía tus límites con entrenamientos funcionales de alta intensidad que mejoran fuerza, resistencia y agilidad.</p>
+               <a href="clases.html#crossfit" class="btn btn-outline-primary mt-auto">Más Info</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3: Spinning -->
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+          <div class="card h-100 shadow-sm custom-card">
+            <img src="assets/Spinning.jpg" class="card-img-top" alt="Clase de Spinning" />
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title h5">Spinning</h3>
+              <p class="card-text">Quema calorías y mejora tu salud cardiovascular en nuestras energéticas clases de spinning con música motivadora.</p>
+               <a href="clases.html#spinning" class="btn btn-outline-primary mt-auto">Más Info</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="assets/crossfit_37303.webp" alt="Clase de CrossFit" />
-        <div class="card-content">
-          <h3>CrossFit</h3>
-          <p>Alta intensidad.</p>
+    </div>
+  </section>
+
+  <!-- ========================= Contador Animado ========================= -->
+  <section class="contador bg-primary text-white text-center py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <div class="contador-item">
+            <span class="numero display-4 fw-bold" id="contador-socios" data-count="500">0</span>+
+            <p class="lead">Socios Satisfechos</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <div class="contador-item">
+            <span class="numero display-4 fw-bold" id="contador-clases" data-count="30">0</span>+
+            <p class="lead">Clases Semanales</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contador-item">
+            <span class="numero display-4 fw-bold" id="contador-entrenadores" data-count="15">0</span>+
+            <p class="lead">Entrenadores Expertos</p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <img src="assets/Spinning.jpg" alt="Clase de Spinning" />
-        <div class="card-content">
-          <h3>Spinning</h3>
-          <p>Cardio total.</p>
+    </div>
+  </section>
+
+  <!-- ========================= Testimonios (Carrusel) ========================= -->
+  <section class="testimonios py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5 section-title">Lo que dicen nuestros socios</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner text-center" style="max-width: 700px; margin: auto;">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <img src="assets/avatar1.webp" class="rounded-circle mb-3" alt="Avatar Juan P." style="width: 80px; height: 80px;">
+            <blockquote class="blockquote">
+              <p>"Desde que me uní a PowerFit, mi energía ha aumentado increíblemente. Los entrenadores son fantásticos y realmente se preocupan por tu progreso."</p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+              Juan P. <cite title="Source Title">Miembro desde 2023</cite>
+            </figcaption>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+             <img src="assets/avatar2.webp" class="rounded-circle mb-3" alt="Avatar Laura M." style="width: 80px; height: 80px;">
+            <blockquote class="blockquote">
+              <p>"El ambiente en PowerFit es inmejorable. Hice amigos y encontré una comunidad que me motiva a diario. Las clases de Spinning son mis favoritas, ¡pura adrenalina!"</p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+              Laura M. <cite title="Source Title">Miembro desde 2022</cite>
+            </figcaption>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+             <img src="assets/avatar3.jpg" class="rounded-circle mb-3" alt="Avatar Carlos G." style="width: 80px; height: 80px;">
+            <blockquote class="blockquote">
+              <p>"Como alguien nuevo en el CrossFit, estaba intimidado, pero el equipo de PowerFit me guió paso a paso. Ahora me siento más fuerte y confiado que nunca. ¡Totalmente recomendado!"</p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+              Carlos G. <cite title="Source Title">Miembro desde 2024</cite>
+            </figcaption>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= Footer ========================= -->
+  <footer class="footer text-white pt-5 pb-4">
+    <div class="container text-center text-md-start">
+      <div class="row text-center text-md-start">
+
+        <!-- Newsletter Section -->
+        <div class="col-md-4 col-lg-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 fw-bold text-primary">Newsletter</h5>
+          <p>Suscribite para recibir nuestras últimas noticias y ofertas especiales.</p>
+          <!-- Newsletter Form -->
+          <form id="newsletterForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="newsletterEmail" class="form-label visually-hidden">Email</label>
+              <input type="email" class="form-control" id="newsletterEmail" placeholder="Tu email" required>
+              <div class="invalid-feedback">
+                Por favor, ingresa un email válido.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" id="newsletterSubmitBtn">
+              Suscribirme
+            </button>
+            <div id="newsletterSpinner" class="d-none text-center mt-2">
+                <div class="spinner-border spinner-border-sm text-light" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+             <div id="newsletterSuccess" class="d-none alert alert-success mt-2 p-2" role="alert">
+                ¡Gracias por suscribirte!
+            </div>
+          </form>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-md-2 col-lg-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 fw-bold text-primary">Enlaces</h5>
+          <p><a href="clases.html" class="text-white" style="text-decoration: none;">Clases</a></p>
+          <p><a href="entrenadores.html" class="text-white" style="text-decoration: none;">Entrenadores</a></p>
+          <p><a href="precios.html" class="text-white" style="text-decoration: none;">Precios</a></p>
+          <p><a href="blog.html" class="text-white" style="text-decoration: none;">Blog</a></p>
+        </div>
+
+        <!-- Contact/Map Section -->
+        <div class="col-md-4 col-lg-3 mx-auto mt-3">
+           <h5 class="text-uppercase mb-4 fw-bold text-primary">Contacto</h5>
+           <p><i class="fas fa-map-marker-alt me-2"></i> Calle Falsa 123, Ciudad</p>
+           <p><i class="fas fa-envelope me-2"></i> info@powerfit.com</p>
+           <p><i class="fas fa-phone me-2"></i> +54 11 1234 5678</p>
+           <!-- Map -->
+           <div class="mapa mt-3">
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.01688817817!2d-58.38157048477006!3d-34.6037389804595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf14a0b1c7%3A0xba7d8f4f3a4f7b6e!2sObelisco!5e0!3m2!1ses-419!2sar!4v1678886543210!5m2!1ses-419!2sar" width="100%" height="150" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           </div>
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <!-- Footer Bottom -->
+      <div class="row align-items-center">
+        <!-- Copyright -->
+        <div class="col-md-7 col-lg-8">
+          <p class="mb-0">© <span id="currentYear"></span> PowerFit Gym. Todos los derechos reservados.
+             Diseñado con <i class="fas fa-heart text-danger"></i> por [Tu Nombre/Equipo]
+          </p>
+        </div>
+        <!-- Social Media -->
+        <div class="col-md-5 col-lg-4">
+          <div class="text-center text-md-end redes">
+            <a href="#" class="btn btn-outline-light btn-floating m-1" role="button" aria-label="Facebook">
+                <img src="assets/Facebook_logo_(square).png" alt="Facebook" class="social-icon">
+            </a>
+            <a href="#" class="btn btn-outline-light btn-floating m-1" role="button" aria-label="Instagram">
+                <img src="assets/logo-instagram.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="#" class="btn btn-outline-light btn-floating m-1" role="button" aria-label="Twitter">
+                <img src="assets/Logo_of_Twitter.png" alt="Twitter" class="social-icon">
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="contador">
-    <div class="contador-item">
-      <span class="numero" id="contador-socios">500+</span>
-      <p>Socios Satisfechos</p>
-    </div>
-  </section>
-
-  <section class="testimonios">
-    <h2>Testimonios</h2>
-    <div class="carrusel">
-      <div class="slide active">
-        <p>"Gracias a PowerFit, logré mis metas."</p>
-        <strong>- Juan P.</strong>
-      </div>
-      <div class="slide">
-        <p>"Entrenadores increíbles y excelente ambiente."</p>
-        <strong>- Laura M.</strong>
-      </div>
-      <!-- Add more slides if needed -->
-    </div>
-  </section>
-
-  <footer>
-    <div class="newsletter">
-      <h3>Suscribite al newsletter</h3>
-      <form>
-        <input type="email" placeholder="Tu email" required>
-        <button type="button" class="button">Suscribirme</button>
-      </form>
-    </div>
-
-    <div class="redes">
-        <a href="#"><img src="assets/Facebook_logo_(square).png" alt="Facebook"></a>
-        <a href="#"><img src="assets/logo-instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="assets/Logo_of_Twitter.png" alt="Twitter"></a>
-      </div>
-
-    <div class="mapa">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322839!2d106.8195613507848!3d-6.194741395509438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356280477!2sJakarta!5e0!3m2!1sen!2sid!4v1620385288815!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </footer>
 
-  <script src="js/dark-mode.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Replace with your kit or download -->
+  <script src="js/script.js"></script>
+  <script src="js/dark-mode.js"></script>
 
 </body>
 </html>

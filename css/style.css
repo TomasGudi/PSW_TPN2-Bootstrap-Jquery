@@ -1,19 +1,17 @@
 :root {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --header-bg: #f8f9fa;
-  --footer-bg: #343a40;
-  --footer-text: #f8f9fa;
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212529;
+  --bs-primary: #0d6efd; /* Bootstrap Primary */
+  --bs-secondary: #6c757d; /* Bootstrap Secondary */
+  --navbar-bg: rgba(248, 249, 250, 0.9); /* Slightly transparent light navbar */
+  --footer-bg: #212529; /* Dark Footer */
+  --footer-text: rgba(255, 255, 255, 0.7);
   --card-bg: #ffffff;
-  --card-border: #dee2e6;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
-  --hero-overlay-bg: rgba(0, 0, 0, 0.5);
+  --card-border: var(--bs-border-color-translucent);
+  --link-color: var(--bs-primary);
+  --link-hover-color: #0a58ca; /* Darker primary */
+  --hero-overlay-bg: rgba(0, 0, 0, 0.4);
   --hero-text: #ffffff;
-  --link-color: #007bff;
-  --link-hover-color: #0056b3;
   --icon-filter: invert(0%);
   --toggle-button-bg: #eee;
   --toggle-button-border: #ccc;
@@ -22,371 +20,291 @@
   --transition-speed: 0.3s;
 }
 
-body.dark-mode {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --primary-color: #4dabf7;
-  --secondary-color: #adb5bd;
-  --header-bg: #1f1f1f;
+/* Dark Mode Variables */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #121212;
+  --bs-body-color: #e0e0e0;
+  --bs-primary: #4dabf7; /* Lighter blue for dark mode */
+  --bs-secondary: #adb5bd;
+  --navbar-bg: rgba(33, 37, 41, 0.9); /* Slightly transparent dark navbar */
   --footer-bg: #1c1c1c;
   --footer-text: #adb5bd;
   --card-bg: #1e1e1e;
   --card-border: #444444;
-  --button-bg: #4dabf7;
-  --button-text: #121212;
+  --link-color: var(--bs-primary);
+  --link-hover-color: #8ccbff; /* Lighter hover */
   --hero-overlay-bg: rgba(0, 0, 0, 0.7);
   --hero-text: #f0f0f0;
-  --link-color: #4dabf7;
-  --link-hover-color: #8ccbff;
   --icon-filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
   --toggle-button-bg: #333;
   --toggle-button-border: #555;
   --toggle-button-text: #e0e0e0;
+
+  /* Override Bootstrap dark components if needed */
+  --bs-light-rgb: 222, 226, 230; /* Adjust light color for dark mode */
+  --bs-dark-rgb: 52, 58, 64; /* Adjust dark color for dark mode */
+  --bs-emphasis-color-rgb: 248, 249, 250;
+  --bs-secondary-color: rgba(222, 226, 230, 0.75);
+  --bs-secondary-bg: #343a40;
+  --bs-tertiary-color: rgba(222, 226, 230, 0.5);
+  --bs-tertiary-bg: #2b3035;
+  --bs-emphasis-color: #f8f9fa;
+  --bs-border-color: #495057;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
+  --bs-form-control-bg: #1a1a1a; /* Darker form inputs */
+  --bs-form-control-color: var(--bs-body-color);
+  --bs-form-control-border-color: var(--bs-border-color);
 }
 
+/* ========================= General Styles ========================= */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: sans-serif;
-  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Example font */
+  padding-top: 70px; /* Adjust based on fixed navbar height */
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
 }
 
-header {
-  background-color: var(--header-bg);
-  padding: 10px 0;
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bs-primary); /* Use primary color for headings */
+}
+
+.section-title {
+  color: var(--bs-primary);
+  font-weight: bold;
+  margin-bottom: 3rem !important;
+}
+
+/* ========================= Header / Navbar ========================= */
+.navbar {
+  background-color: var(--navbar-bg) !important; /* Use variable, !important needed for BS override */
+  backdrop-filter: blur(5px); /* Optional: Frosted glass effect */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color var(--transition-speed) ease;
-  position: relative;
-  /* Needed for absolute positioning of toggle button */
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
 }
 
-.dark-mode-toggle {
-  position: absolute;
-  top: 7px;
-  left: 165px;
+.navbar .logo {
+  color: var(--bs-primary);
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.navbar .nav-link {
+  color: var(--bs-body-color); /* Use body color for links */
+  font-weight: 500;
+  transition: color var(--transition-speed) ease;
+  margin: 0 0.5rem;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--bs-primary); /* Highlight active/hovered links */
+}
+
+/* Style the dark mode toggle button */
+#darkModeToggle {
   background-color: var(--toggle-button-bg);
   color: var(--toggle-button-text);
   border: 1px solid var(--toggle-button-border);
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 20px;
+  border-radius: 20px; /* Make it roundish */
+  padding: 0.3rem 0.7rem;
   font-size: 1rem;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-  z-index: 1001;
-  /* Ensure it's above other header elements if needed */
 }
 
-
-.logo {
-  color: var(--primary-color);
-  margin: 0 20px;
-  font-size: 1.8em;
-}
-
+/* Mega Menu Basic Styling (Adjust as needed) */
 .mega-menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10px;
-  flex-wrap: wrap;
+  min-width: 300px; /* Example width */
+  padding: 1rem;
+  /* Add more styles for columns, etc. if building a complex mega menu */
 }
 
-.menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.menu li {
-  margin-left: 20px;
-}
-
-.menu a {
-  text-decoration: none;
-  color: var(--link-color);
-  font-weight: bold;
-  transition: color var(--transition-speed) ease;
-}
-
-.menu a:hover {
-  color: var(--link-hover-color);
-}
-
-/* Mobile Menu Styles (Keep existing, ensure colors use variables if needed) */
-#menu-toggle {
-  display: none;
-}
-
-.menu-icon {
-  display: none;
-  /* Hide hamburger by default */
-  font-size: 2em;
-  cursor: pointer;
-  color: var(--text-color);
-  /* Use variable */
-}
-
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: var(--header-bg);
-    /* Use variable */
-    position: absolute;
-    top: 60px;
-    /* Adjust based on header height */
-    left: 0;
-    z-index: 1000;
-    border-top: 1px solid var(--card-border);
-    /* Use variable */
+/* Adjust navbar padding on smaller screens if needed */
+@media (max-width: 991.98px) {
+  .navbar {
+    background-color: var(--bs-tertiary-bg); /* More solid background when collapsed */
+    backdrop-filter: none;
   }
-
-  .menu li {
-    margin: 10px 0;
-    text-align: center;
+  .navbar-nav {
+    margin-top: 1rem; /* Space above collapsed items */
   }
-
-  .menu-icon {
-    display: block;
-    /* Show hamburger on mobile */
-    margin-right: 15px;
-    /* Add some space */
-  }
-
-  #menu-toggle:checked~.menu {
-    display: flex;
-  }
-
-  .dark-mode-toggle {
-    /* Adjust position slightly for mobile if needed */
-    top: 12px;
-    right: 60px;
-    /* Make space for hamburger */
+  #darkModeToggle {
+      margin-left: auto !important; /* Push toggle to the right before hamburger */
+      margin-right: 0.5rem;
   }
 }
 
-
+/* ========================= Hero Section ========================= */
 .hero {
-  position: relative;
-  height: 70vh;
-  /* Adjust height as needed */
-  overflow: hidden;
+  min-height: 70vh; /* Ensure minimum height */
 }
 
 .hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  z-index: -1;
+  /* CSS for video is mostly inline now for positioning */
+  color: var(--bs-body-color); /* Fallback text color */
 }
 
 .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: var(--hero-overlay-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   transition: background-color var(--transition-speed) ease;
 }
 
-.hero-title {
+.hero-title, .hero-subtitle, .hero-button {
   color: var(--hero-text);
-  font-size: 2.5em;
-  max-width: 80%;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow for readability */
 }
 
-section {
-  padding: 40px 20px;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--primary-color);
-}
-
-.clases-destacadas .cards-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.card {
+/* ========================= Clases Destacadas (Cards) ========================= */
+.custom-card {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 8px;
-  overflow: hidden;
-  width: 300px;
-  /* Adjust width as needed */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform 0.2s ease;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+  overflow: hidden; /* Ensure image corners are rounded with card */
 }
 
-.card:hover {
+.custom-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card img {
-  width: 100%;
+.custom-card .card-img-top {
   height: 200px;
-  /* Fixed height for images */
   object-fit: cover;
-  /* Ensure images cover the area */
-  display: block;
 }
 
-.card-content {
-  padding: 15px;
+.custom-card .card-body {
+  background-color: var(--card-bg); /* Ensure body bg matches */
+   transition: background-color var(--transition-speed) ease;
 }
 
-.card h3 {
-  margin-top: 0;
-  color: var(--primary-color);
+.custom-card .card-title {
+   color: var(--bs-primary);
 }
 
+/* ========================= Contador Section ========================= */
 .contador {
-  background-color: var(--secondary-color);
-  /* Use a secondary color */
-  color: var(--bg-color);
-  /* Use inverse text color */
-  text-align: center;
-  padding: 30px 20px;
+  /* Uses Bootstrap bg-primary, text-white */
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-.contador-item .numero {
-  font-size: 2.5em;
-  font-weight: bold;
-  display: block;
-}
-
+/* ========================= Testimonios Section ========================= */
 .testimonios {
-  background-color: var(--bg-color);
-  /* Match body background */
+  background-color: var(--bs-form-control-bg); /* Use Bootstrap light background */
+  transition: background-color var(--transition-speed) ease;
 }
 
-.carrusel {
-  /* Basic carousel styling - add JS later if needed for functionality */
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+[data-bs-theme="dark"] .testimonios {
+  background-color: var(--bs-form-control-bg); /* Slightly different dark bg */
 }
 
-.slide {
-  display: none;
-  /* Hide all slides by default */
-  padding: 20px;
-  border: 1px solid var(--card-border);
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background-color: var(--card-bg);
-  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+#testimonialCarousel .carousel-item {
+ padding: 2rem 4rem; /* Add padding inside the item */
 }
 
-.slide.active {
-  display: block;
-  /* Show active slide */
+#testimonialCarousel .blockquote {
+ color: var(--bs-form-control-bg); /* Default color based on theme */
 }
 
-.slide p {
-  font-style: italic;
-  margin-bottom: 10px;
+[data-bs-theme="dark"] #testimonialCarousel .blockquote {
+ color: var(--bs-form-control-bg);
 }
 
-.slide strong {
-  color: var(--secondary-color);
+#testimonialCarousel .blockquote-footer {
+ color: var(--bs-form-control-bg);
+}
+
+#testimonialCarousel .carousel-control-prev-icon,
+#testimonialCarousel .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.3); /* Darker controls */
+  border-radius: 50%;
+  padding: 1rem; /* Make hit area larger */
+}
+
+[data-bs-theme="dark"] #testimonialCarousel .carousel-control-prev-icon,
+[data-bs-theme="dark"] #testimonialCarousel .carousel-control-next-icon {
+  background-color: rgba(255, 255, 255, 0.2); /* Lighter controls for dark mode */
+}
+
+#testimonialCarousel .carousel-indicators button {
+  background-color: var(--bs-secondary); /* Indicator color */
+}
+
+#testimonialCarousel .carousel-indicators button.active {
+  background-color: var(--bs-primary); /* Active indicator color */
 }
 
 
-footer {
+/* ========================= Footer ========================= */
+.footer {
   background-color: var(--footer-bg);
   color: var(--footer-text);
-  padding: 40px 20px;
-  text-align: center;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-.newsletter h3 {
-  margin-bottom: 15px;
+.footer h5 {
+  color: var(--bs-primary); /* Footer headings */
 }
 
-.newsletter form {
-  margin-bottom: 20px;
+.footer a.text-white:hover {
+  color: var(--bs-light) !important; /* Slightly brighter hover for links */
+  text-decoration: underline !important;
 }
 
-.newsletter input[type="email"] {
-  padding: 10px;
-  margin-right: 5px;
-  border: 1px solid var(--card-border);
-  /* Use variable */
-  border-radius: 4px;
-  background-color: var(--bg-color);
-  /* Use variable */
-  color: var(--text-color);
-  /* Use variable */
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+.footer .form-control {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent input */
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+.footer .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+.footer .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--bs-primary);
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 
-.button,
-button[type="button"] {
-  padding: 10px 15px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+/* Dark mode specific footer input adjustments if needed */
+[data-bs-theme="dark"] .footer .form-control {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--bs-body-color);
+}
+[data-bs-theme="dark"] .footer .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+[data-bs-theme="dark"] .footer .form-control:focus {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: var(--bs-primary);
+    color: var(--bs-body-color);
 }
 
-.button:hover,
-button[type="button"]:hover {
-  opacity: 0.9;
-}
 
-.redes {
-  margin-bottom: 20px;
-}
-
-.redes a {
-  margin: 0 10px;
-  display: inline-block;
-  /* Ensure proper spacing and filter application */
-}
-
-.redes img {
-  width: 30px;
-  /* Adjust icon size */
-  height: 30px;
+.footer .redes .social-icon {
+  width: 24px; /* Adjust icon size */
+  height: 24px;
   filter: var(--icon-filter);
-  /* Apply filter based on mode */
   transition: filter var(--transition-speed) ease;
+  vertical-align: middle; /* Align icon within button */
 }
 
-.mapa iframe {
-  width: 100%;
-  max-width: 600px;
-  /* Limit map width */
-  height: 300px;
-  border: 0;
-  border-radius: 5px;
+.footer .redes .btn {
+    border-radius: 50%; /* Make icon buttons circular */
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Ensure video text fallback uses correct color */
-.hero-video {
-  color: var(--text-color);
-}
+/* Remove styles for elements no longer used or handled by Bootstrap */
+/* e.g., .mega-menu (old one), .menu, .menu li, .menu-icon, #menu-toggle, etc. */
+/* e.g., .clases-destacadas .cards-container (replaced by row/col) */
+/* e.g., .card (old one), .card-content */
+/* e.g., .contador (old one), .contador-item .numero (old one) */
+/* e.g., .carrusel, .slide, .slide.active */
+/* e.g., .newsletter input[type="email"], .button[type="button"] (old ones) */
+

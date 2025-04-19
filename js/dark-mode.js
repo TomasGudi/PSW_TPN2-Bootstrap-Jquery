@@ -1,122 +1,49 @@
-// js/dark-mode.js
+$(function() {
+    const themeToggleBtn = $('#darkModeToggle');
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const bodyElement = $('body'); // Use body or html element for data-bs-theme
+    const activeIcon = themeToggleBtn.find('.theme-icon-active');
 
-// Wait for the DOM to be fully loaded before running the script
-document.addEventListener('DOMContentLoaded', () => {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-    const storageKey = 'darkModeEnabled';
-    const htmlElement = document.documentElement; // Target the <html> element
-
-    // Function to enable dark mode
-    const enableDarkMode = () => {
-        body.classList.add('dark-mode');
-        localStorage.setItem(storageKey, 'true');
-        if (darkModeToggle) { // Check if button exists
-            darkModeToggle.textContent = '☀️'; // Change icon to sun
-            darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+    // Function to set the theme
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            bodyElement.attr('data-bs-theme', 'dark');
+            if (activeIcon.length) activeIcon.text('☀️'); // Sun icon for dark mode
+            localStorage.setItem('theme', 'dark');
+            // Ensure navbar class reflects theme if needed (Bootstrap usually handles this)
+            // $('#mainNavbar').removeClass('navbar-light bg-light').addClass('navbar-dark bg-dark');
+        } else {
+            bodyElement.attr('data-bs-theme', 'light');
+             if (activeIcon.length) activeIcon.text('🌙'); // Moon icon for light mode
+            localStorage.setItem('theme', 'light');
+            // $('#mainNavbar').removeClass('navbar-dark bg-dark').addClass('navbar-light bg-light');
         }
-        htmlElement.classList.remove('dark-mode-preload'); // Remove preload class
-    };
-
-    // Function to disable dark mode
-    const disableDarkMode = () => {
-        body.classList.remove('dark-mode');
-        localStorage.setItem(storageKey, 'false');
-        if (darkModeToggle) { // Check if button exists
-            darkModeToggle.textContent = '🌙'; // Change icon to moon
-            darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
-        }
-        htmlElement.classList.remove('dark-mode-preload'); // Remove preload class
-    };
-
-    // --- Initial Theme Setup ---
-    // This part runs after the DOM is loaded, ensuring the button state is correct
-    // The core FOUC prevention is handled by the inline script in <head>
-
-    const storedPreference = localStorage.getItem(storageKey);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    // Check if dark mode should be enabled based on storage or preference
-    let darkModeInitiallyEnabled = false;
-    if (storedPreference === 'true') {
-        darkModeInitiallyEnabled = true;
-    } else if (storedPreference === null && prefersDark) {
-        darkModeInitiallyEnabled = true;
     }
 
-    // Apply the correct class to body and set button state
-    if (darkModeInitiallyEnabled) {
-        // Ensure body class is added (might have only been on html initially by preload script)
-        if (!body.classList.contains('dark-mode')) {
-            body.classList.add('dark-mode');
-        }
-        if (darkModeToggle) {
-            darkModeToggle.textContent = '☀️';
-            darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
-        }
+    // Apply the saved theme or detect preference on load
+    if (currentTheme) {
+        setTheme(currentTheme);
     } else {
-        // Ensure body class is removed
-        if (body.classList.contains('dark-mode')) {
-            body.classList.remove('dark-mode');
-        }
-        if (darkModeToggle) {
-            darkModeToggle.textContent = '🌙';
-            darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        if (prefersDarkScheme.matches) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
         }
     }
 
-    // Remove preload class safely after styles are likely applied and JS has run
-    // Use requestAnimationFrame for better timing after render
-    requestAnimationFrame(() => {
-        htmlElement.classList.remove('dark-mode-preload');
+    // Listener for toggle button click
+    themeToggleBtn.on('click', function() {
+        const newTheme = bodyElement.attr('data-bs-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
     });
 
-
-    // --- Event Listeners ---
-
-    // Add event listener to the toggle button (only if it exists)
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                disableDarkMode();
-            } else {
-                enableDarkMode();
-            }
-        });
-    } else {
-        console.warn("Dark mode toggle button with ID 'darkModeToggle' not found.");
-    }
-
-
-    // Optional: Listen for changes in system preference
-    try {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        // Check if addEventListener is supported (newer method)
-        if (mediaQuery.addEventListener) {
-            mediaQuery.addEventListener('change', event => {
-                // Only automatically change if the user hasn't manually set a preference
-                if (localStorage.getItem(storageKey) === null) {
-                    if (event.matches) {
-                        enableDarkMode();
-                    } else {
-                        disableDarkMode();
-                    }
-                }
-            });
+    // Optional: Listener for OS theme changes
+    prefersDarkScheme.addEventListener('change', (e) => {
+        // Only change if no user preference is stored
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light');
         }
-        // Fallback for older browsers (like Safari < 14)
-        else if (mediaQuery.addListener) {
-             mediaQuery.addListener(event => {
-                if (localStorage.getItem(storageKey) === null) {
-                    if (event.matches) {
-                        enableDarkMode();
-                    } else {
-                        disableDarkMode();
-                    }
-                }
-            });
-        }
-    } catch (e) {
-        console.error("Error setting up media query listener for dark mode:", e);
-    }
+    });
+
 });
