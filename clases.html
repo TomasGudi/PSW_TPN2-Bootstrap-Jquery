@@ -4,195 +4,310 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clases | PowerFit</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/clases.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body data-bs-theme="light"> 
 
-    <header>
-        <nav class="mega-menu">
-          <h1 class="logo">PowerFit</h1>
-          <input type="checkbox" id="menu-toggle" />
-          <label for="menu-toggle" class="menu-icon">☰</label>
-          <ul class="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="clases.html">Clases</a></li>
-            <li><a href="entrenadores.html">Entrenadores</a></li>
-            <li><a href="precios.html">Precios</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="blog.html">Blog</a></li>
+  <header>
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">PowerFit</a>
+        <button id="darkModeToggle" class="btn btn-outline-secondary ms-2 ms-lg-3 order-lg-3" type="button" aria-label="Toggle dark mode">
+          <span class="theme-icon-active">🌙</span> 
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <!-- Mark Clases as active -->
+              <a class="nav-link active" aria-current="page" href="clases.html">Clases</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="entrenadoresDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Entrenadores
+              </a>
+              <ul class="dropdown-menu mega-menu" aria-labelledby="entrenadoresDropdown">
+                <li><a class="dropdown-item" href="entrenadores.html">Ver Todos</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Entrenador Destacado 1</a></li>
+                <li><a class="dropdown-item" href="#">Entrenador Destacado 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="precios.html">Precios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
           </ul>
-          <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
-        </nav>
-      </header>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-      <main>
-        <section class="titulo-pagina">
-            <h2>Nuestras Clases</h2>
-            <p>Encontrá la actividad perfecta para vos.</p>
-        </section>
-    
-        <input type="radio" name="filtro-clase" id="filtro-todos" class="filtro-input" checked>
-        <input type="radio" name="filtro-clase" id="filtro-crossfit" class="filtro-input">
-        <input type="radio" name="filtro-clase" id="filtro-yoga" class="filtro-input">
-        <input type="radio" name="filtro-clase" id="filtro-spinning" class="filtro-input">
-        <input type="radio" name="filtro-clase" id="filtro-musculacion" class="filtro-input">
-    
-        <section class="filtros">
-          <label for="filtro-todos">Todas</label>
-          <label for="filtro-crossfit">CrossFit</label>
-          <label for="filtro-yoga">Yoga</label>
-          <label for="filtro-spinning">Spinning</label>
-          <label for="filtro-musculacion">Musculación</label>
-        </section>
-    
-        <section class="galeria-clases">
-          <div class="clase yoga">
-            <img src="assets/yoga.jpg" alt="Clase de Yoga" style="height: 300px;">
-            <div class="info">
-              <h3>Yoga Flow</h3>
-              <p>Conectá cuerpo y mente.</p>
-            </div>
-          </div>
-          <div class="clase crossfit">
-            <img src="assets/crossfit_37303.webp" alt="Clase de CrossFit" style="height: 450px;">
-            <div class="info">
-              <h3>CrossFit WOD</h3>
-              <p>Desafía tus límites.</p>
-            </div>
-          </div>
-          <div class="clase spinning">
-            <img src="assets/Spinning.jpg" alt="Clase de Spinning" style="height: 350px;">
-            <div class="info">
-              <h3>Spinning Energy</h3>
-              <p>Pedaleá al ritmo de la música.</p>
-            </div>
-          </div>
-          <div class="clase musculacion">
-            <img src="assets/musc1.jpg" alt="Clase de Musculación" style="height: 400px;">
-            <div class="info">
-              <h3>Entrenamiento de Fuerza</h3>
-              <p>Construí masa muscular.</p>
-            </div>
-          </div>
-           <div class="clase yoga">
-            <img src="assets/yoga2.jpg" alt="Clase de Yoga Restaurativo" style="height: 380px;">
-            <div class="info">
-              <h3>Yoga Restaurativo</h3>
-              <p>Relajación profunda.</p>
-            </div>
-          </div>
-           <div class="clase crossfit">
-            <img src="assets/crossfit_37303.webp" alt="Clase de CrossFit Endurance" style="height: 320px;">
-            <div class="info">
-              <h3>CrossFit Endurance</h3>
-              <p>Mejorá tu resistencia.</p>
-            </div>
-          </div>
-           <div class="clase spinning">
-            <img src="assets/AIRFRO_PSYCLE_V2s-14.webp" alt="Clase de Spinning Climb" style="height: 420px;">
-            <div class="info">
-              <h3>Spinning Climb</h3>
-              <p>Simulación de montaña.</p>
-            </div>
-          </div>
-           <div class="clase musculacion">
-            <img src="assets/musc2.jpg" alt="Clase de Musculación Funcional" style="height: 360px;">
-            <div class="info">
-              <h3>Musculación Funcional</h3>
-              <p>Movimientos para la vida diaria.</p>
-            </div>
-          </div>
-        </section>
-    
-        <section class="horarios">
-          <h2>Horarios Semanales</h2>
-          <div class="tabla-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Hora</th>
-                  <th>Lunes</th>
-                  <th>Martes</th>
-                  <th>Miércoles</th>
-                  <th>Jueves</th>
-                  <th>Viernes</th>
-                  <th>Sábado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>08:00 - 09:00</td>
-                  <td>Yoga Flow</td>
-                  <td>Spinning Energy</td>
-                  <td>Yoga Flow</td>
-                  <td>Spinning Energy</td>
-                  <td>Yoga Flow</td>
-                  <td>CrossFit WOD</td>
-                </tr>
-                <tr>
-                  <td>09:00 - 10:00</td>
-                  <td>Musculación</td>
-                  <td>CrossFit WOD</td>
-                  <td>Musculación</td>
-                  <td>CrossFit WOD</td>
-                  <td>Musculación</td>
-                  <td>Spinning Climb</td>
-                </tr>
-                <tr>
-                  <td>17:00 - 18:00</td>
-                  <td>Spinning Climb</td>
-                  <td>Yoga Restaurativo</td>
-                  <td>Spinning Climb</td>
-                  <td>Yoga Restaurativo</td>
-                  <td>Spinning Climb</td>
-                  <td>Musculación Funcional</td>
-                </tr>
-                <tr>
-                  <td>18:00 - 19:00</td>
-                  <td>CrossFit Endurance</td>
-                  <td>Musculación Funcional</td>
-                  <td>CrossFit Endurance</td>
-                  <td>Musculación Funcional</td>
-                  <td>CrossFit Endurance</td>
-                  <td>Yoga Flow</td>
-                </tr>
-                 <tr>
-                  <td>19:00 - 20:00</td>
-                  <td>Yoga Flow</td>
-                  <td>Spinning Energy</td>
-                  <td>Yoga Flow</td>
-                  <td>Spinning Energy</td>
-                  <td>Yoga Flow</td>
-                  <td>-</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </main>
+  <main class="container mt-5 pt-4"> <!-- Add padding top to clear fixed navbar -->
 
-      <footer>
-        <div class="newsletter">
-          <h3>Suscribite al newsletter</h3>
-          <form>
-            <input type="email" placeholder="Tu email" required>
-            <button type="button" class="button">Suscribirme</button>
+    <!-- Page Title Section -->
+    <section class="titulo-pagina text-center py-4 mb-5">
+      <h2 class="display-5 fw-bold">Nuestras Clases</h2>
+      <p class="lead text-muted">Encontrá la actividad perfecta para vos.</p>
+    </section>
+
+    <!-- Filter Buttons (Using jQuery for filtering) -->
+    <section class="filtros text-center mb-5" id="clasesFiltros">
+      <button type="button" class="btn btn-outline-primary filter-btn active" data-filter="all">Todas</button>
+      <button type="button" class="btn btn-outline-primary filter-btn" data-filter=".yoga">Yoga</button>
+      <button type="button" class="btn btn-outline-primary filter-btn" data-filter=".crossfit">CrossFit</button>
+      <button type="button" class="btn btn-outline-primary filter-btn" data-filter=".spinning">Spinning</button>
+      <button type="button" class="btn btn-outline-primary filter-btn" data-filter=".musculacion">Musculación</button>
+    </section>
+
+    <!-- Gallery Section (Using CSS Grid for Masonry + Bootstrap Cards) -->
+    <section class="galeria-clases mb-5">
+      <!-- Items will be filtered by jQuery -->
+      <!-- Clase Item 1 (Yoga) -->
+      <div class="clase-item yoga card overflow-hidden"> <!-- Add category class -->
+        <img src="assets/yoga.jpg" class="card-img-top" alt="Clase de Yoga Flow" style="height: 300px;">
+        <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">Yoga Flow</h3>
+          <p class="card-text">Conectá cuerpo y mente.</p>
+        </div>
+      </div>
+      <!-- Clase Item 2 (CrossFit) -->
+      <div class="clase-item crossfit card overflow-hidden">
+        <img src="assets/crossfit_37303.webp" class="card-img-top" alt="Clase de CrossFit WOD" style="height: 450px;">
+         <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">CrossFit WOD</h3>
+          <p class="card-text">Desafía tus límites.</p>
+        </div>
+      </div>
+      <!-- Clase Item 3 (Spinning) -->
+      <div class="clase-item spinning card overflow-hidden">
+        <img src="assets/Spinning.jpg" class="card-img-top" alt="Clase de Spinning Energy" style="height: 350px;">
+         <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">Spinning Energy</h3>
+          <p class="card-text">Pedaleá al ritmo de la música.</p>
+        </div>
+      </div>
+      <!-- Clase Item 4 (Musculacion) -->
+      <div class="clase-item musculacion card overflow-hidden">
+        <img src="assets/musc1.jpg" class="card-img-top" alt="Clase de Entrenamiento de Fuerza" style="height: 400px;">
+         <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">Entrenamiento de Fuerza</h3>
+          <p class="card-text">Construí masa muscular.</p>
+        </div>
+      </div>
+      <!-- Clase Item 5 (Yoga) -->
+      <div class="clase-item yoga card overflow-hidden">
+        <img src="assets/yoga2.jpg" class="card-img-top" alt="Clase de Yoga Restaurativo" style="height: 380px;">
+         <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">Yoga Restaurativo</h3>
+          <p class="card-text">Relajación profunda.</p>
+        </div>
+      </div>
+      <!-- Clase Item 6 (CrossFit) -->
+      <div class="clase-item crossfit card overflow-hidden">
+        <img src="assets/crossfi3.jpg" class="card-img-top" alt="Clase de CrossFit Endurance" style="height: 320px;">
+         <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">CrossFit Endurance</h3>
+          <p class="card-text">Mejorá tu resistencia.</p>
+        </div>
+      </div>
+      <!-- Clase Item 7 (Spinning) -->
+      <div class="clase-item spinning card overflow-hidden">
+        <img src="assets/AIRFRO_PSYCLE_V2s-14.webp" class="card-img-top" alt="Clase de Spinning Climb" style="height: 420px;">
+         <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">Spinning Climb</h3>
+          <p class="card-text">Simulación de montaña.</p>
+        </div>
+      </div>
+      <!-- Clase Item 8 (Musculacion) -->
+      <div class="clase-item musculacion card overflow-hidden">
+        <img src="assets/musc2.jpg" class="card-img-top" alt="Clase de Musculación Funcional" style="height: 360px;">
+         <div class="card-img-overlay info d-flex flex-column justify-content-end">
+          <h3 class="card-title h5">Musculación Funcional</h3>
+          <p class="card-text">Movimientos para la vida diaria.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="horarios mb-5">
+      <h2 class="text-center mb-4 section-title">Horarios Semanales</h2>
+      <!-- Responsive Table Wrapper -->
+      <div class="table-responsive shadow-sm rounded">
+        <table class="table table-striped table-bordered table-hover text-center align-middle mb-0">
+          <thead class="table-primary"> <!-- Use Bootstrap theme color -->
+            <tr>
+              <th scope="col">Hora</th>
+              <th scope="col">Lunes</th>
+              <th scope="col">Martes</th>
+              <th scope="col">Miércoles</th>
+              <th scope="col">Jueves</th>
+              <th scope="col">Viernes</th>
+              <th scope="col">Sábado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">08:00 - 09:00</th>
+              <td>Yoga Flow</td>
+              <td>Spinning Energy</td>
+              <td>Yoga Flow</td>
+              <td>Spinning Energy</td>
+              <td>Yoga Flow</td>
+              <td>CrossFit WOD</td>
+            </tr>
+            <tr>
+              <th scope="row">09:00 - 10:00</th>
+              <td>Musculación</td>
+              <td>CrossFit WOD</td>
+              <td>Musculación</td>
+              <td>CrossFit WOD</td>
+              <td>Musculación</td>
+              <td>Spinning Climb</td>
+            </tr>
+            <tr>
+              <th scope="row">17:00 - 18:00</th>
+              <td>Spinning Climb</td>
+              <td>Yoga Restaurativo</td>
+              <td>Spinning Climb</td>
+              <td>Yoga Restaurativo</td>
+              <td>Spinning Climb</td>
+              <td>Musculación Funcional</td>
+            </tr>
+            <tr>
+              <th scope="row">18:00 - 19:00</th>
+              <td>CrossFit Endurance</td>
+              <td>Musculación Funcional</td>
+              <td>CrossFit Endurance</td>
+              <td>Musculación Funcional</td>
+              <td>CrossFit Endurance</td>
+              <td>Yoga Flow</td>
+            </tr>
+             <tr>
+              <th scope="row">19:00 - 20:00</th>
+              <td>Yoga Flow</td>
+              <td>Spinning Energy</td>
+              <td>Yoga Flow</td>
+              <td>Spinning Energy</td>
+              <td>Yoga Flow</td>
+              <td class="text-muted">-</td> <!-- Indicate empty slot -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================= Footer (Consistent with index.html) ========================= -->
+  <footer class="footer text-white pt-5 pb-4">
+    <div class="container text-center text-md-start">
+      <div class="row text-center text-md-start">
+
+        <!-- Newsletter Section -->
+        <div class="col-md-4 col-lg-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 fw-bold text-primary">Newsletter</h5>
+          <p>Suscribite para recibir nuestras últimas noticias y ofertas especiales.</p>
+          <!-- Newsletter Form -->
+          <form id="newsletterForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="newsletterEmail" class="form-label visually-hidden">Email</label>
+              <input type="email" class="form-control" id="newsletterEmail" placeholder="Tu email" required>
+              <div class="invalid-feedback">
+                Por favor, ingresa un email válido.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" id="newsletterSubmitBtn">
+              Suscribirme
+            </button>
+            <div id="newsletterSpinner" class="d-none text-center mt-2">
+                <div class="spinner-border spinner-border-sm text-light" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+             <div id="newsletterSuccess" class="d-none alert alert-success mt-2 p-2" role="alert">
+                ¡Gracias por suscribirte!
+            </div>
           </form>
         </div>
-    
-        <div class="redes">
-            <a href="#"><img src="assets/Facebook_logo_(square).png" alt="Facebook"></a>
-            <a href="#"><img src="assets/logo-instagram.png" alt="Instagram"></a>
-            <a href="#"><img src="assets/Logo_of_Twitter.png" alt="Twitter"></a>
-          </div>
-    
-        <div class="mapa">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322839!2d106.8195613507848!3d-6.194741395509438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356280477!2sJakarta!5e0!3m2!1sen!2sid!4v1620385288815!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+        <!-- Quick Links -->
+        <div class="col-md-2 col-lg-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 fw-bold text-primary">Enlaces</h5>
+          <p><a href="clases.html" class="text-white" style="text-decoration: none;">Clases</a></p>
+          <p><a href="entrenadores.html" class="text-white" style="text-decoration: none;">Entrenadores</a></p>
+          <p><a href="precios.html" class="text-white" style="text-decoration: none;">Precios</a></p>
+          <p><a href="blog.html" class="text-white" style="text-decoration: none;">Blog</a></p>
         </div>
-      </footer>
-    
-      <script src="js/dark-mode.js" defer></script>
+
+        <!-- Contact/Map Section -->
+        <div class="col-md-4 col-lg-3 mx-auto mt-3">
+           <h5 class="text-uppercase mb-4 fw-bold text-primary">Contacto</h5>
+           <p><i class="fas fa-map-marker-alt me-2"></i> Calle Falsa 123, Ciudad</p>
+           <p><i class="fas fa-envelope me-2"></i> info@powerfit.com</p>
+           <p><i class="fas fa-phone me-2"></i> +54 11 1234 5678</p>
+           <!-- Map -->
+           <div class="mapa mt-3">
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.01688817817!2d-58.38157048477006!3d-34.6037389804595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacf14a0b1c7%3A0xba7d8f4f3a4f7b6e!2sObelisco!5e0!3m2!1ses-419!2sar!4v1678886543210!5m2!1ses-419!2sar" width="100%" height="150" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           </div>
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <!-- Footer Bottom -->
+      <div class="row align-items-center">
+        <!-- Copyright -->
+        <div class="col-md-7 col-lg-8">
+          <p class="mb-0">© <span id="currentYear"></span> PowerFit Gym. Todos los derechos reservados.
+             Diseñado con <i class="fas fa-heart text-danger"></i> por Tomas Joaquin Gudiño
+          </p>
+        </div>
+        <!-- Social Media -->
+        <div class="col-md-5 col-lg-4">
+          <div class="text-center text-md-end redes">
+            <a href="#" class="btn btn-outline-light btn-floating m-1" role="button" aria-label="Facebook">
+                <img src="assets/Facebook_logo_(square).png" alt="Facebook" class="social-icon">
+            </a>
+            <a href="#" class="btn btn-outline-light btn-floating m-1" role="button" aria-label="Instagram">
+                <img src="assets/logo-instagram.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="#" class="btn btn-outline-light btn-floating m-1" role="button" aria-label="Twitter">
+                <img src="assets/Logo_of_Twitter.png" alt="Twitter" class="social-icon">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Replace with your kit or download -->
+  <!-- Main Custom JS (for common things like footer form) -->
+  <script src="js/script.js"></script>
+  <!-- Dark Mode JS -->
+  <script src="js/dark-mode.js"></script>
+  <!-- Page-Specific JS (for filters) -->
+  <script src="js/clases.js"></script>
 
 </body>
 </html>
