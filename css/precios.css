@@ -1,315 +1,104 @@
-/* --- Estilos específicos para precios.html --- */
+/* ============================================= */
+/*            css/precios.css                    */
+/* Estilos específicos para precios.html        */
+/* ============================================= */
 
-.precios {
-  padding: 40px 20px; /* Añade padding como en otras secciones si no está en style.css */
-  text-align: center;
+/* --- Page Title --- */
+.titulo-pagina h2 {
+    color: var(--primary-color);
 }
 
-.precios h2 {
-  margin-bottom: 2rem;
-  color: var(--primary-color); /* Usa variable de style.css */
+/* --- Pricing Table --- */
+#pricingTable {
+    /* Improve vertical alignment if needed, though align-middle helps */
+    /* border-collapse: separate; /* Needed for some border-radius effects if desired */
+    /* border-spacing: 0; */
+    font-size: 0.95rem; /* Slightly smaller font for table */
+    border: 1px solid var(--card-border); /* Add main table border */
 }
 
-/* --- Toggle Switch --- */
-.toggle-container {
-  margin-bottom: 2rem;
-  display: flex; /* Para centrar el switch */
-  justify-content: center; /* Centra el switch */
+#pricingTable thead th {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-color);      
+    border-color: var(--card-border);      
+    padding-top: 1rem;                     
+    padding-bottom: 1rem; 
 }
 
-.switch {
-  display: inline-flex;
-  align-items: center;
-  background: #ddd; /* Color base claro */
-  border-radius: 20px; /* Más redondeado */
-  padding: 4px;
-  cursor: pointer;
-  position: relative;
-  width: 180px; /* Ancho fijo para las opciones */
-  height: 32px; /* Altura fija */
-  box-sizing: border-box;
-  border: 1px solid #ccc; /* Borde sutil */
-  transition: background-color var(--transition-speed) ease;
+#pricingTable th,
+#pricingTable td {
+    border-color: var(--card-border); /* Use theme variable */
+    padding: 0.8rem 0.5rem; /* Adjust padding */
+    vertical-align: middle; /* Ensure vertical alignment */
 }
 
-body.dark-mode .switch {
-  background: #555; /* Fondo oscuro para el switch */
-  border-color: #777;
+/* Style for feature column header and cells */
+#pricingTable th.feature-col,
+#pricingTable td.feature-col {
+    text-align: left;
+    padding-left: 1.5rem;
+}
+#pricingTable tbody th.feature-col {
+    font-weight: 500; /* Less bold than header */
+    background-color: var(--table-row-header-bg); /* Subtle background for feature names */
 }
 
-.switch .slider {
-  background: var(--primary-color); /* Usa color primario */
-  border-radius: 16px; /* Redondeado para encajar */
-  width: calc(50% - 4px); /* Mitad del ancho menos padding */
-  height: calc(100% - 8px); /* Altura completa menos padding */
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  transition: transform 0.3s ease, background-color var(--transition-speed) ease;
-  z-index: 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+/* Price row styling */
+.price-row th,
+.price-row td {
+    font-weight: bold;
+    vertical-align: middle;
+}
+.price-row small {
+    font-size: 0.7em;
+    font-weight: normal;
 }
 
-#toggle:checked + .switch .slider {
-  transform: translateX(calc(100% + 0px)); /* Mueve el slider al otro lado */
+/* Tooltip icon */
+.fa-info-circle {
+    cursor: help; /* Indicate tooltip availability */
 }
 
-.option {
-  flex: 1;
-  text-align: center;
-  z-index: 1;
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: var(--secondary-color); /* Color secundario por defecto */
-  transition: color 0.3s ease;
-  line-height: 32px; /* Centra verticalmente el texto */
+/* Recommended Badge in Header */
+.plan-recommended .badge {
+    font-size: 0.7em;
+    vertical-align: middle;
 }
 
-/* Estilo para la opción activa (texto blanco sobre el slider) */
-#toggle:not(:checked) + .switch .option:first-child,
-#toggle:checked + .switch .option:last-child {
-  color: var(--button-text); /* Color del texto del botón (generalmente blanco) */
+/* --- Column Highlighting --- */
+/* Define the highlight style */
+#pricingTable th.highlight-col,
+#pricingTable td.highlight-col {
+  /* Use rgba for subtle background compatible with dark/light mode */
+  background-color: rgba(var(--bs-primary-rgb), 0.08) !important; /* Use !important to override table-hover if needed */
+  transition: background-color 0.2s ease-in-out;
 }
 
-/* --- Tabla de Precios --- */
-.tabla-precios {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem; /* Espacio entre planes */
-  flex-wrap: wrap;
-  margin-top: 2rem; /* Espacio después del toggle */
+/* Ensure the feature name column doesn't get the column highlight */
+#pricingTable th.feature-col.highlight-col,
+#pricingTable td.feature-col.highlight-col {
+     background-color: var(--table-row-header-bg) !important; /* Keep its original background */
 }
-
-.plan {
-  background: var(--card-bg); /* Usa variable de fondo de tarjeta */
-  padding: 1.5rem 1.2rem;
-  border-radius: 12px;
-  border: 1px solid var(--card-border); /* Usa variable de borde de tarjeta */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  width: 280px; /* Ancho ligeramente mayor */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  position: relative; /* Necesario para badges y tooltips */
-  text-align: center; /* Centra contenido del plan */
-}
-
-.plan h3 {
-  margin-top: 0;
-  margin-bottom: 0.8rem;
-  color: var(--primary-color); /* Color primario para títulos */
-  font-size: 1.4rem;
-}
-
-.plan ul {
-  list-style: none;
-  padding: 0;
-  text-align: left; /* Alinea items de la lista a la izquierda */
-  margin: 1.5rem 0;
-  color: var(--text-color); /* Color de texto principal */
-}
-
-.plan li {
-  margin: 0.6rem 0;
-  position: relative; /* Para tooltips */
-  padding-left: 1.2rem; /* Espacio para un posible icono */
-  font-size: 0.95rem;
-}
-
-/* Icono de check (opcional, puedes añadirlo con ::before) */
-.plan li::before {
-  content: '✓'; /* O un icono SVG/FontAwesome */
-  position: absolute;
-  left: 0;
-  color: #4caf50; /* Verde check */
-  font-weight: bold;
-}
-body.dark-mode .plan li::before {
-    color: #81c784; /* Verde más claro en modo oscuro */
+/* Keep header background for highlighted header cells */
+#pricingTable thead th.highlight-col {
+     background-color: var(--table-header-bg) !important;
+     /* Add a subtle bottom border or other indicator if needed */
+     /* box-shadow: inset 0 -2px 0 var(--primary-color); */
 }
 
 
-.plan button {
-  margin-top: 1rem;
-  padding: 0.7rem 1.5rem;
-  border: none;
-  color: white; /* Texto siempre blanco para botones de color */
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 80%; /* Ancho del botón */
-  transition: background-color 0.3s ease, opacity 0.3s ease;
-}
-
-/* --- Precios y Ahorro --- */
-.precio {
-  font-size: 1.8rem; /* Tamaño grande para el precio */
-  margin: 1rem 0 0.5rem 0;
-  font-weight: bold;
-  color: var(--text-color); /* Color de texto principal */
-}
-
-.precio.mensual, .precio.anual {
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
-}
-
-.precio.anual {
-  display: none; /* Oculto por defecto */
-}
-
-.ahorro {
-  display: none; /* Oculto por defecto */
-  position: absolute;
-  top: 10px; /* Ajusta posición */
-  left: 50%;
-  transform: translateX(-50%); /* Centra horizontalmente */
-  background: crimson;
-  color: white;
-  font-weight: bold;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.75rem;
-  border-radius: 15px; /* Más redondeado */
-  z-index: 3; /* Encima del contenido del plan */
-  white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* --- Lógica de cambio Mensual/Anual con :has() --- */
-.planes-container:has(#toggle:checked) .precio.mensual {
-  display: none;
-}
-.planes-container:has(#toggle:checked) .precio.anual {
-  display: block;
-}
-.planes-container:has(#toggle:checked) .ahorro {
-  display: block; /* Muestra el ahorro en modo anual */
-}
-
-/* --- Badge Recomendado --- */
-.recomendado-mensual::after,
-.recomendado-anual::after {
-  content: "★ Recomendado";
-  position: absolute;
-  top: -12px; /* Ligeramente más arriba */
-  right: -10px;
-  background: #ff9800; /* Naranja para destacar */
-  color: white;
-  font-size: 0.8rem;
-  font-weight: bold;
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 3;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.recomendado-anual::after {
-    display: none; /* Oculto por defecto */
-}
-
-/* Lógica para mostrar/ocultar badges con :has() */
-.planes-container:has(#toggle:checked) .recomendado-mensual::after {
-  display: none; /* Oculta badge mensual si está en anual */
-}
-.planes-container:has(#toggle:checked) .recomendado-anual::after {
-  display: block; /* Muestra badge anual si está en anual */
-}
-
-
-/* --- Efectos Hover y Colores Específicos --- */
-.plan:hover {
-  transform: translateY(-8px) scale(1.02); /* Levanta y escala un poco */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  z-index: 2; /* Asegura que esté por encima de otros planes al hacer hover */
-}
-
-/* Colores específicos y hover para cada plan */
-/* Básico */
-.plan.basico button { background: #74e2ab; } /* Gris azulado */
-.plan.basico button:hover { background: #74e2ab; opacity: 0.9; }
-.plan.basico:hover { border-color: #74e2ab; }
-
-/* Intermedio */
-.plan.intermedio button { background: #0f0b91; } /* Verde */
-.plan.intermedio button:hover { background: #0f0b91; opacity: 0.9; }
-.plan.intermedio:hover { border-color: #0f0b91; }
-/* El badge recomendado ya tiene su propio estilo */
-
-/* Premium */
-.plan.premium button { background: #b61102; } /* Violeta */
-.plan.premium button:hover { background: #b61102; opacity: 0.9; }
-.plan.premium:hover { border-color: #b61102; }
-
-
-/* --- Tooltips --- */
-.tooltip {
-  /* position: relative; ya está en li */
-  cursor: help;
-  border-bottom: 1px dotted var(--secondary-color); /* Indica que hay tooltip */
-}
-
-.tooltip .tooltip-text { /* Selecciona el span dentro del li con clase tooltip */
-  position: absolute;
-  bottom: 115%; /* Posición encima del elemento */
-  left: 50%;
-  transform: translateX(-50%) translateY(10px); /* Centrado y ligeramente abajo */
-  background: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
-  color: white;
-  padding: 0.5rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none; /* No interfiere con el cursor */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 10; /* Asegura que esté por encima de todo */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Flecha del tooltip (opcional) */
-.tooltip .tooltip-text::after {
-  content: "";
-  position: absolute;
-  top: 100%; /* Abajo del tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
-}
-
-.tooltip:hover .tooltip-text {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0); /* Sube a su posición final */
-}
-
-/* --- Ajustes Dark Mode específicos de precios --- */
-body.dark-mode .plan {
-    /* El fondo y borde ya usan variables --card-bg y --card-border */
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Sombra más sutil en oscuro */
-}
-
-body.dark-mode .plan:hover {
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-    /* Los border-color específicos del hover se mantienen */
-}
-
-body.dark-mode .tooltip .tooltip-text {
-    background: rgba(230, 230, 230, 0.9); /* Fondo claro para tooltip en dark mode */
-    color: #111; /* Texto oscuro */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-body.dark-mode .tooltip .tooltip-text::after {
-    border-top-color: rgba(230, 230, 230, 0.9); /* Flecha clara */
-}
-
-body.dark-mode .ahorro {
-    background: #e53935; /* Rojo un poco más brillante */
-    color: #fff;
-}
-
-body.dark-mode .recomendado-mensual::after,
-body.dark-mode .recomendado-anual::after {
-    background: #ffb74d; /* Naranja más claro */
-    color: #111; /* Texto oscuro para contraste */
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    #pricingTable {
+        font-size: 0.9rem; /* Even smaller font on mobile */
+    }
+    #pricingTable th,
+    #pricingTable td {
+        padding: 0.6rem 0.3rem; /* Reduce padding */
+    }
+    .price-row .h4 {
+        font-size: 1.1rem; /* Adjust price font size */
+    }
+    /* Hide tooltips on very small screens if they cause layout issues */
+    /* .fa-info-circle { display: none; } */
 }

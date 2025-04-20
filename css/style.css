@@ -12,6 +12,9 @@
   --link-hover-color: #0a58ca; /* Darker primary */
   --hero-overlay-bg: rgba(0, 0, 0, 0.4);
   --hero-text: #ffffff;
+  --table-header-bg: var(--bs-light); /* O un gris claro */
+  --table-header-color: var(--bs-dark); /* O un color oscuro */
+  --table-row-header-bg: var(--bs-light); /* O un gris muy claro */
   --icon-filter: invert(0%);
   --toggle-button-bg: #eee;
   --toggle-button-border: #ccc;
@@ -35,6 +38,9 @@
   --link-hover-color: #8ccbff; /* Lighter hover */
   --hero-overlay-bg: rgba(0, 0, 0, 0.7);
   --hero-text: #f0f0f0;
+  --table-header-bg: var(--bs-dark-subtle); /* O un gris oscuro */
+  --table-header-color: var(--bs-light); /* O un color claro como #f8f9fa, #dee2e6 */
+  --table-row-header-bg: var(--bs-dark-subtle); /* O un gris oscuro */
   --icon-filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
   --toggle-button-bg: #333;
   --toggle-button-border: #555;

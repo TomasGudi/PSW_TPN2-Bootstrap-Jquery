@@ -1,195 +1,196 @@
-.titulo-pagina {
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: var(--header-bg); /* Use theme variable */
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--card-border);
-}
-.titulo-pagina h2 {
-  color: var(--primary-color); /* Use theme variable */
-  margin-bottom: 0.5rem;
-}
-.titulo-pagina p {
-  color: var(--secondary-color); /* Use theme variable */
-  font-size: 1.1rem;
-}
-
-/* --- Grid Container --- */
-.grid-entrenadores {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 2rem;
-padding: 0 2rem 2rem 10rem; /* Added padding */
-}
-
-/* --- Tarjeta Flip --- */
-.card {
-perspective: 1000px;
-min-height: 400px; /* Ensure cards have enough height for content */
-}
-
-.card-inner {
-position: relative;
-width: 100%;
-height: 100%;
-transform-style: preserve-3d;
-transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); /* Smoother transition */
-}
-
-.card:hover .card-inner {
-transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-position: absolute;
-backface-visibility: hidden; /* Essential for flip effect */
-width: 100%;
-height: 100%; /* Ensure faces cover the inner div */
-padding: 1.5rem; /* Increased padding */
-border-radius: 10px;
-box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-background: var(--card-bg); /* Use theme variable for background */
-color: var(--text-color); /* Use theme variable for text */
-text-align: center;
-box-sizing: border-box; /* Include padding in width/height */
-display: flex; /* Use flexbox for better content alignment */
-flex-direction: column; /* Stack content vertically */
-justify-content: center; /* Center content vertically */
-overflow: hidden; /* Prevent content overflow */
-}
-
-.card-front {
-z-index: 2;
-align-items: center; /* Center items horizontally */
-}
-
-.card-front img {
-width: 150px; /* Fixed width for profile picture */
-height: 150px; /* Fixed height */
-border-radius: 50%; /* Circular image */
-object-fit: cover; /* Cover the area, cropping if needed */
-margin-bottom: 1rem;
-border: 3px solid var(--primary-color); /* Add border using theme color */
-}
-
-.card-front h3 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.2rem;
-  color: var(--primary-color); /* Use theme color */
-}
-.card-front p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--secondary-color); /* Use theme color */
-}
-
-.card-back {
-transform: rotateY(180deg);
-justify-content: space-around; /* Space out content */
-}
-
-.card-back h4 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: var(--primary-color);
-}
-.card-back p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin-bottom: 1rem;
-}
-
-/* --- Barras de habilidades --- */
-.habilidades {
-  width: 100%;
-  margin-bottom: 1rem; /* Space before rating */
-}
-.habilidades label {
-font-weight: bold;
-display: block;
-margin-top: 0.5rem;
-margin-bottom: 0.2rem; /* Space between label and bar */
-font-size: 0.85rem;
-text-align: left; /* Align labels left */
+/* =========================
+   Page Title Styles
+   ========================= */
+   .flip-card {
+    perspective: 1500px;
+    min-height: 420px;
+    background-color: transparent;
+    border: none;
+    width: 100%; /* <-- AÑADIDO: Asegura que la tarjeta ocupe todo el ancho de la columna */
+    display: block; /* <-- AÑADIDO: Asegura el comportamiento de bloque por defecto */
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+  }
+  
+  /* Flip on hover */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    /* padding: 1.5rem; */ /* Padding original */
+    padding: 1.2rem; /* <-- MODIFICADO: Reducir padding ligeramente */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background: var(--card-bg);
+    color: var(--text-color);
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */ /* Se ajusta abajo */
+    align-items: center; /* Centra horizontalmente el contenido flex */
+    overflow: hidden;
+  }
+  
+  .flip-card-front {
+    z-index: 2;
+    justify-content: center; /* <-- MOVIDO aquí para aplicar solo al frente */
+  }
+  
+  .flip-card-front .trainer-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem; /* Mantenido */
+    border: 3px solid var(--primary-color);
+  }
+  
+  .flip-card-front .trainer-name {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    color: var(--primary-color);
+  }
+  .flip-card-front .trainer-specialty {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+    justify-content: space-between; /* <-- Mantenido: Empuja el rating hacia abajo */
+    /* align-items: center; ya está arriba */
+  }
+  
+  /* ... (resto de los estilos de .flip-card-back, .habilidades, .rating, etc. sin cambios) ... */
+  
+  .flip-card-back .trainer-name {
+    margin-top: 0; /* Asegurar que no haya margen superior extra */
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+  .flip-card-back .trainer-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  
+  /* =========================
+     Skill Bars Styles (Bootstrap Progress)
+     ========================= */
+  .habilidades {
+    width: 100%;
+    max-width: 90%;
+    margin-bottom: 1rem;
+    /* text-align: left; */ /* <-- Eliminado, ya que label tiene text-align: left */
+  }
+  .habilidades label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+    text-align: left; /* <-- Asegura que las etiquetas estén a la izquierda */
+    color: var(--text-color);
 }
 
-.barra {
-background: var(--card-border); /* Use theme variable for background */
-border-radius: 10px;
-height: 10px;
-overflow: hidden;
-margin-bottom: 0.8rem; /* Space between bars */
+/* Style Bootstrap progress bar */
+.progress {
+  background-color: var(--card-border); /* Use theme variable for background */
+  border-radius: 10px;
+  height: 10px; /* Slightly thicker */
+  overflow: hidden;
 }
 
-.nivel {
-height: 100%;
-background: var(--primary-color); /* Use theme variable for fill */
-width: var(--nivel, 0%); /* Use CSS variable, default to 0 */
-border-radius: 10px; /* Match parent radius */
-animation: crecer 1.5s 0.5s ease-out forwards; /* Delay animation slightly */
-transform-origin: left; /* Animate width from left */
+.progress-bar {
+  background-color: var(--primary-color); /* Use theme variable for fill */
+  border-radius: 10px; /* Match parent radius */
+  /* transition: width 1.2s ease-out; */ /* Add transition for smoother jQuery animation */
 }
 
-/* Animation for skill bars */
-@keyframes crecer {
-from {
-  transform: scaleX(0);
-}
-to {
-  transform: scaleX(1);
-}
-}
-
-/* --- Rating con Estrellas --- */
+/* =========================
+   Star Rating Styles (Radio Button Based)
+   ========================= */
 .rating {
-font-size: 1.5rem; /* Size of stars */
-color: var(--secondary-color); /* Default color for empty stars (or use ☆) */
-margin-top: 1rem;
-line-height: 1; /* Prevent extra spacing */
+  display: inline-block; /* Contain the stars */
+  font-size: 1.8rem; /* Size of stars */
+  line-height: 1;
+  margin-top: 1rem; /* Space above rating */
+  direction: rtl; /* Reverse direction for CSS sibling selector trick */
+  text-align: center;
 }
 
-.rating .star {
-  display: inline-block; /* Allow transform and animation */
-  cursor: default; /* Indicate non-interactive */
-  transition: transform 0.2s ease, color 0.3s ease;
-  margin: 0 1px; /* Tiny space between stars */
-  opacity: 0; /* Start hidden for animation */
-  transform: scale(0.5);
-  animation: appear 0.5s cubic-bezier(0.5, 0, 0.5, 1.5) forwards; /* Bounce-in effect */
-  /* Apply animation delay based on star index */
-  animation-delay: calc(0.8s + var(--i) * 0.1s); /* Staggered appearance after flip */
+.rating input[type="radio"] {
+  display: none; /* Hide the actual radio button */
 }
 
-.rating .star.filled {
-color: gold; /* Color for filled stars */
+.rating label {
+  color: var(--secondary-color); /* Empty star color */
+  cursor: pointer;
+  display: inline-block; /* Needed for spacing and potential transforms */
+  padding: 0 0.1em; /* Small spacing between stars */
+  transition: color 0.2s ease-in-out; /* Smooth color transition */
 }
 
-/* Animation for stars appearing */
-@keyframes appear {
-  to {
-      opacity: 1;
-      transform: scale(1);
+/* Change star character on hover/checked */
+.rating label::before {
+    content: '☆'; /* Default empty star */
+}
+.rating label.star-hover::before,
+.rating label.star-filled::before {
+    content: '★'; /* Filled star */
+    color: gold;
+}
+
+/* Hover effect: Highlight stars up to the hovered one */
+.rating:not(:hover) input[type="radio"]:checked ~ label::before {
+    /* Style for checked stars when not hovering */
+    content: '★';
+    color: gold;
+}
+.rating:hover label:hover ~ label::before, /* Stars before hovered one */
+.rating:hover label:hover::before {       /* The hovered star itself */
+    content: '★';
+    color: gold;
+}
+
+/* =========================
+   Responsive Adjustments
+   ========================= */
+@media (max-width: 992px) {
+  .flip-card {
+    min-height: 400px; /* Adjust min height for medium screens */
   }
 }
 
-/* --- Responsivo --- */
 @media (max-width: 768px) {
-  .grid-entrenadores {
+  .entrenadores-grid {
       padding: 0 1rem 1rem 1rem; /* Adjust padding */
       gap: 1.5rem;
   }
-  .card {
+  .flip-card {
       min-height: 380px; /* Adjust min height */
   }
-  .card-front, .card-back {
+  .flip-card-front, .flip-card-back {
       padding: 1rem;
   }
-  .card-front img {
+  .flip-card-front .trainer-img {
       width: 120px;
       height: 120px;
   }
-}
-
-@media (max-width: 600px) {
-/* No specific changes needed based on original, but could adjust grid further */
+  .rating {
+      font-size: 1.6rem; /* Slightly smaller stars on mobile */
+  }
 }
